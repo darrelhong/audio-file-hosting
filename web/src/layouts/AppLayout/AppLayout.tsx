@@ -1,10 +1,14 @@
 import { Link, routes } from '@redwoodjs/router'
 
+import { useAuth } from 'src/auth'
+
 type AppLayoutProps = {
   children?: React.ReactNode
 }
 
 const AppLayout = ({ children }: AppLayoutProps) => {
+  const { logOut } = useAuth()
+
   return (
     <>
       <div className="px-4 pt-2">
@@ -20,7 +24,9 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
           <div className="navbar-end flex gap-2">
             <Link>Manage</Link>
-            <button className="btn-accent btn-xs btn">Logout</button>
+            <button className="btn-accent btn-xs btn" onClick={logOut}>
+              Logout
+            </button>
           </div>
         </div>
       </div>
