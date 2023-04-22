@@ -11,7 +11,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <>
-      <div className="px-4 pt-2">
+      <div className="px-4 pb-4 pt-2">
         <div className="navbar rounded-box bg-neutral text-neutral-content">
           <div className="navbar-start">
             <Link
@@ -22,8 +22,13 @@ const AppLayout = ({ children }: AppLayoutProps) => {
             </Link>
           </div>
 
-          <div className="navbar-end flex gap-2">
-            <Link>Manage</Link>
+          <div className="navbar-end flex gap-1 ">
+            <Link
+              to={routes.manageAccount()}
+              className="btn-ghost btn-sm btn normal-case"
+            >
+              Manage
+            </Link>
             <button className="btn-accent btn-xs btn" onClick={logOut}>
               Logout
             </button>
