@@ -19,6 +19,7 @@ model User {
   resetToken          String?
   resetTokenExpiresAt DateTime?
   audioFiles          AudioFile[]
+  disabled            Boolean     @default(false)
 }
 
 model AudioFile {
