@@ -14,7 +14,7 @@ import {
 import { FormError } from '@redwoodjs/forms'
 import { useForm } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
-import { Toaster, toast } from '@redwoodjs/web/dist/toast'
+import { toast } from '@redwoodjs/web/dist/toast'
 
 const CREATE_AUDIO_FILE = gql`
   mutation CreateAudioFileMutation($input: CreateAudioFileInput!) {
@@ -86,7 +86,6 @@ export const CreateAudioFileForm = () => {
 
   return (
     <>
-      <Toaster />
       <h3>Create new file</h3>
       <div className="w-full">
         <Form

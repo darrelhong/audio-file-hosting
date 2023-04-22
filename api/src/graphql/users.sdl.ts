@@ -27,9 +27,9 @@ export const schema = gql`
   input UpdateUserInput {
     email: String
     name: String
-    hashedPassword: String
-    salt: String
-    resetToken: String
-    resetTokenExpiresAt: DateTime
+  }
+
+  type Mutation {
+    updateUser(input: UpdateUserInput!): User! @requireAuth
   }
 `

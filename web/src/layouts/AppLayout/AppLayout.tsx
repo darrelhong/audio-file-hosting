@@ -1,4 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
+import { Toaster } from '@redwoodjs/web/dist/toast'
 
 import { useAuth } from 'src/auth'
 
@@ -11,6 +12,7 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 
   return (
     <>
+      <Toaster />
       <div className="px-4 pb-4 pt-2">
         <div className="navbar rounded-box bg-neutral text-neutral-content">
           <div className="navbar-start">
