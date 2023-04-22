@@ -1,16 +1,8 @@
-import { Form, SelectField, SubmitHandler, TextField } from '@redwoodjs/forms'
 import { MetaTags } from '@redwoodjs/web'
 
-type AudioFormValues = {
-  description: string
-  category: string
-}
+import { CreateAudioFileForm } from 'src/components/CreateAudioFileForm'
 
 const HomePage = () => {
-  const onSumbit: SubmitHandler<AudioFormValues> = (data) => {
-    console.log(data)
-  }
-
   return (
     <>
       <MetaTags title="Home" description="Home page" />
@@ -18,43 +10,7 @@ const HomePage = () => {
       <div className="prose px-6 pt-4">
         <h1 className="mb-4">My files</h1>
 
-        <h3>Create new file</h3>
-        <div className="w-full">
-          <Form
-            onSubmit={onSumbit}
-            config={{ mode: 'onBlur' }}
-            className="form-control"
-          >
-            <label className="label" htmlFor="description">
-              Description
-            </label>
-            <TextField
-              name="description"
-              required
-              validation={{ required: true }}
-              className="input-bordered input"
-              errorClassName="input-bordered input input-error"
-            />
-
-            <label className="label" htmlFor="category">
-              Category
-            </label>
-            <SelectField
-              name="category"
-              required
-              validation={{ required: true }}
-              className="input-bordered input"
-              errorClassName="input-bordered input input-error"
-            >
-              <option value="">Select a category</option>
-              <option value="music">Music</option>
-              <option value="sound-effect">Sound Effect</option>
-              <option value="recording">Recording</option>
-            </SelectField>
-
-            <button className="btn-primary btn mt-4 self-start">Submit</button>
-          </Form>
-        </div>
+        <CreateAudioFileForm />
       </div>
     </>
   )
