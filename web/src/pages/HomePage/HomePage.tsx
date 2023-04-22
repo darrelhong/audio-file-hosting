@@ -1,19 +1,61 @@
-import { Link, routes } from '@redwoodjs/router'
+import { Form, SelectField, SubmitHandler, TextField } from '@redwoodjs/forms'
 import { MetaTags } from '@redwoodjs/web'
 
+type AudioFormValues = {
+  description: string
+  category: string
+}
+
 const HomePage = () => {
+  const onSumbit: SubmitHandler<AudioFormValues> = (data) => {
+    console.log(data)
+  }
+
   return (
     <>
       <MetaTags title="Home" description="Home page" />
 
-      <h1>HomePage</h1>
-      <p>
-        Find me in <code>./web/src/pages/HomePage/HomePage.tsx</code>
-      </p>
-      <p>
-        My default route is named <code>home</code>, link to me with `
-        <Link to={routes.home()}>Home</Link>`
-      </p>
+      <div className="prose px-6 pt-4">
+        <h1 className="mb-4">My files</h1>
+
+        <h3>Create new file</h3>
+        <div className="w-full">
+          <Form
+            onSubmit={onSumbit}
+            config={{ mode: 'onBlur' }}
+            className="form-control"
+          >
+            <label className="label" htmlFor="description">
+              Description
+            </label>
+            <TextField
+              name="description"
+              required
+              validation={{ required: true }}
+              className="input-bordered input"
+              errorClassName="input-bordered input input-error"
+            />
+
+            <label className="label" htmlFor="category">
+              Category
+            </label>
+            <SelectField
+              name="category"
+              required
+              validation={{ required: true }}
+              className="input-bordered input"
+              errorClassName="input-bordered input input-error"
+            >
+              <option value="">Select a category</option>
+              <option value="music">Music</option>
+              <option value="sound-effect">Sound Effect</option>
+              <option value="recording">Recording</option>
+            </SelectField>
+
+            <button className="btn-primary btn mt-4 self-start">Submit</button>
+          </Form>
+        </div>
+      </div>
     </>
   )
 }
