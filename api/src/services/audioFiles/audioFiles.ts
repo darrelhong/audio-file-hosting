@@ -7,12 +7,12 @@ import type {
 import { db } from 'src/lib/db'
 
 export const audioFiles: QueryResolvers['audioFiles'] = () => {
-  return db.audioFile.findMany()
+  return db.audioFile.findMany({ where: { userId: context.currentUser.id } })
 }
 
 export const audioFile: QueryResolvers['audioFile'] = ({ id }) => {
-  return db.audioFile.findUnique({
-    where: { id },
+  return db.audioFile.findFirst({
+    where: { id, userId: context.currentUser.id },
   })
 }
 
