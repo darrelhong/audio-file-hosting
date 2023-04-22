@@ -8,7 +8,7 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Home page" />
 
-      <div className="prose px-6 pt-4">
+      <div className="prose mx-auto px-6 pt-4">
         <h1 className="mb-4">My files</h1>
 
         <CreateAudioFileForm />
