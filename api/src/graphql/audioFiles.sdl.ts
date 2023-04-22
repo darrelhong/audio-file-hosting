@@ -5,6 +5,7 @@ export const schema = gql`
     category: String!
     user: User!
     userId: Int!
+    url: String!
   }
 
   type Query {
@@ -15,8 +16,8 @@ export const schema = gql`
   input CreateAudioFileInput {
     description: String!
     category: String!
-    userId: Int!
-    url: String!
+    userId: Int
+    url: String
   }
 
   input UpdateAudioFileInput {

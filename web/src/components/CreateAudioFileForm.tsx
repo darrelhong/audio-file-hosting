@@ -1,4 +1,25 @@
-import { Form, SelectField, SubmitHandler, TextField } from '@redwoodjs/forms'
+import { CreateAudioFileMutation } from 'types/graphql'
+import { CreateAudioFileMutationVariables } from 'types/graphql'
+
+import {
+  Form,
+  SelectField,
+  Submit,
+  SubmitHandler,
+  TextField,
+} from '@redwoodjs/forms'
+import { FormError } from '@redwoodjs/forms'
+import { useForm } from '@redwoodjs/forms'
+import { useMutation } from '@redwoodjs/web'
+import { Toaster, toast } from '@redwoodjs/web/dist/toast'
+
+const CREATE_AUDIO_FILE = gql`
+  mutation CreateAudioFileMutation($input: CreateAudioFileInput!) {
+    createAudioFile(input: $input) {
+      id
+    }
+  }
+`
 
 type AudioFormValues = {
   description: string
@@ -6,19 +27,41 @@ type AudioFormValues = {
 }
 
 export const CreateAudioFileForm = () => {
-  const onSumbit: SubmitHandler<AudioFormValues> = (data) => {
+  const formMethods = useForm({ mode: 'onBlur' })
+
+  const [create, { loading, error }] = useMutation<
+    CreateAudioFileMutation,
+    CreateAudioFileMutationVariables
+  >(CREATE_AUDIO_FILE, {
+    onCompleted: () => {
+      formMethods.reset()
+      toast.success('File submitted')
+    },
+  })
+
+  const onSubmit: SubmitHandler<AudioFormValues> = (data) => {
     console.log(data)
+    create({ variables: { input: data } })
   }
 
   return (
     <>
+      <Toaster />
       <h3>Create new file</h3>
       <div className="w-full">
         <Form
-          onSubmit={onSumbit}
-          config={{ mode: 'onBlur' }}
+          onSubmit={onSubmit}
           className="form-control"
+          formMethods={formMethods}
         >
+          <FormError
+            error={error}
+            wrapperClassName="bg-error rounded p-3"
+            titleClassName="m-0"
+            listClassName="m-0"
+            listItemClassName="m-0"
+          />
+
           <label className="label" htmlFor="description">
             Description
           </label>
@@ -46,7 +89,12 @@ export const CreateAudioFileForm = () => {
             <option value="recording">Recording</option>
           </SelectField>
 
-          <button className="btn-primary btn mt-4 self-start">Submit</button>
+          <Submit
+            disabled={loading}
+            className="btn-primary btn mt-4 self-start"
+          >
+            Submit
+          </Submit>
         </Form>
       </div>
     </>
