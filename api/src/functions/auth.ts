@@ -51,6 +51,9 @@ export const handler = async (
     // by the `logIn()` function from `useAuth()` in the form of:
     // `{ message: 'Error message' }`
     handler: (user) => {
+      if (user.disabled) {
+        throw new Error('User not found')
+      }
       return user
     },
 
