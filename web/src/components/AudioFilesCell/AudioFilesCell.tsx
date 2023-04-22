@@ -41,7 +41,7 @@ export const Success = ({ audioFiles }: CellSuccessProps<AudioFilesQuery>) => {
               <td>{audioFile.category}</td>
               <td>
                 <audio controls preload="metadata">
-                  <source src={audioFile.url} />
+                  <source src={audioFile.url} type="audio/mp3" />
                 </audio>
               </td>
             </tr>

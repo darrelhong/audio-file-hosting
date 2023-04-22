@@ -17,7 +17,7 @@ export const schema = gql`
     description: String!
     category: String!
     userId: Int
-    url: String
+    url: String!
   }
 
   input UpdateAudioFileInput {

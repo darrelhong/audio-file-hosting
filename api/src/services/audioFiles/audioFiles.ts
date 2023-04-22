@@ -22,7 +22,7 @@ export const createAudioFile: MutationResolvers['createAudioFile'] = ({
   input,
 }) => {
   return db.audioFile.create({
-    data: { ...input, userId: context.currentUser.id, url: 'temp url' },
+    data: { ...input, userId: context.currentUser.id },
   })
 }
 
