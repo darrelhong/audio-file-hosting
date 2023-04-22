@@ -33,6 +33,7 @@ describe('audioFiles', () => {
       input: {
         description: 'String',
         category: 'String',
+        url: 'String',
         userId: scenario.audioFile.two.userId,
       },
     })

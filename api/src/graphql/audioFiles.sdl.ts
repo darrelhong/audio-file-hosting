@@ -16,12 +16,14 @@ export const schema = gql`
     description: String!
     category: String!
     userId: Int!
+    url: String!
   }
 
   input UpdateAudioFileInput {
     description: String
     category: String
     userId: Int
+    url: String
   }
 
   type Mutation {

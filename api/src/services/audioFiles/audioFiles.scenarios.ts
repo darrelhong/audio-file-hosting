@@ -8,6 +8,7 @@ export const standard = defineScenario<Prisma.AudioFileCreateArgs>({
       data: {
         description: 'String',
         category: 'String',
+        url: 'String',
         user: {
           create: {
             email: 'String5289149',
@@ -21,6 +22,7 @@ export const standard = defineScenario<Prisma.AudioFileCreateArgs>({
       data: {
         description: 'String',
         category: 'String',
+        url: 'String',
         user: {
           create: {
             email: 'String2080340',
