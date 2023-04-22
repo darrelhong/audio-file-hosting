@@ -1,5 +1,6 @@
 import { MetaTags } from '@redwoodjs/web'
 
+import AudioFilesCell from 'src/components/AudioFilesCell'
 import { CreateAudioFileForm } from 'src/components/CreateAudioFileForm'
 
 const HomePage = () => {
@@ -11,6 +12,8 @@ const HomePage = () => {
         <h1 className="mb-4">My files</h1>
 
         <CreateAudioFileForm />
+
+        <AudioFilesCell />
       </div>
     </>
   )

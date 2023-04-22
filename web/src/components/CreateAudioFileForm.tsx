@@ -37,6 +37,7 @@ export const CreateAudioFileForm = () => {
       formMethods.reset()
       toast.success('File submitted')
     },
+    refetchQueries: ['AudioFilesQuery'],
   })
 
   const onSubmit: SubmitHandler<AudioFormValues> = (data) => {
