@@ -6,9 +6,9 @@ export const users: QueryResolvers['users'] = () => {
   return db.user.findMany()
 }
 
-export const user: QueryResolvers['user'] = ({ id }) => {
+export const user: QueryResolvers['user'] = () => {
   return db.user.findUnique({
-    where: { id },
+    where: { id: context.currentUser.id },
   })
 }
 
