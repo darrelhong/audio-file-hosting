@@ -15,7 +15,7 @@ export const QUERY = gql`
 
 export const Loading = () => <div>Loading...</div>
 
-export const Empty = () => <div>Empty</div>
+export const Empty = () => <h4>No records found</h4>
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div className="text-error">Error: {error?.message}</div>
